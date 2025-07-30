@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+    .login-ui-box{
+        @apply w-40 h-[300px] rounded-full bg-primary absolute rotate-45
+    }
+}
+
+@layer components{
+    .signup-ui-box{
+        @apply w-64 h-[300px] rounded-full bg-primary absolute rotate-45
+    }
+}
+
+body {
+  @apply font-poppins;
+}
+
