@@ -11,6 +11,7 @@ function Home() {
   const token = localStorage.getItem('token')
   const [stories, setStories] = useState([]);
   const id=localStorage.getItem("userId")
+  const [prevstry,setPrevstry] = useState([])
 
   const [storyinput, setStoryinput] = useState({
     title: "",
@@ -59,7 +60,7 @@ function Home() {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
-        console.log("Image upload response", imageResponse.data);
+        
 
 
         if (imageResponse.data && imageResponse.data.ImageUploaded) {
@@ -80,7 +81,7 @@ function Home() {
         image: uploadedImagePath,
         userId: storyinput.userId
       };
-      console.log("Final storyData being sent:", storyData);
+      // console.log("Final storyData being sent:", storyData);
       const storyResponse = await axios.post(
         "http://localhost:8000/api/story/create",
         storyData,
@@ -91,19 +92,41 @@ function Home() {
           },
         }
       );
-      console.log("Story created successfully", storyResponse.data);
+      // console.log("Story created successfully", storyResponse.data);
       const storyId = storyResponse.data.story._id;
 localStorage.setItem("createdStoryId", storyId);
 
 
-      Swal.fire("Story Created Successfully");
+      Swal.fire( {
+        icon:"success",
+        text:"Story Created Successfully",
+        timer:2000 ,
+        showConfirmButton: false,
+        timerProgressBar: true
+      });
+      setStories((prev) => [storyResponse.data.story, ...prev]);
       setIsopen(false); // close modal
+setStoryinput({
+  title: "",
+  description: "",
+  storyDetail: "",
+  visitedDate: "",
+  visitedLocation: [],
+  image: null,
+  userId: currentUserId
+});
+
     } catch (err) {
       console.error("Error in creating story", err);
       if (err.response) {
         console.error("Response data:", err.response.data);
       }
-      Swal.fire("Story Creation Failed");
+      Swal.fire({
+        text:"Story Creation failed",
+        howConfirmButton: false,
+        timerProgressBar: true
+      });
+
     }
   };
 

@@ -22,7 +22,7 @@ function Navbar({ setStories }) {
       })
       .then(res => {
         setUserInfo(res.data.user);
-        console.log(res.data);
+
       })
       .catch(err => {
         console.error("Failed to fetch user info", err);

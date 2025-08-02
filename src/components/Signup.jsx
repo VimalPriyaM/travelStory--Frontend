@@ -31,8 +31,8 @@ function Signup() {
 
     try {
       const response = await axios.post("http://localhost:8000/api/user/signup", usersignup);
-      console.log("Signup successful:", response.data);
-      alert("Signup successful!");
+      
+      
       localStorage.setItem("signuptoken", response.data.token);
       setResult("");
     } catch (error) {

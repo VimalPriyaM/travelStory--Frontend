@@ -61,6 +61,13 @@ function Travelstorycard({ stories, setStories }) {
 
       const result = await response.json();
       console.log('Story deleted:', result);
+      Swal.fire({
+        icon:"success",
+        text:"Story Deleted Successfully",
+        timer:2000,
+        showConfirmButton: false,
+        timerProgressBar: true
+      })
       setStories((prevStories) => prevStories.filter(story => story._id !== storyId));
       setExpandedStory(null);
 
@@ -94,7 +101,13 @@ function Travelstorycard({ stories, setStories }) {
         }
       );
       console.log("Story updated successfully", response.data);
-      Swal.fire("Story Updated Successfully", '', 'success');
+      Swal.fire({
+        icon:"success",
+        text:"Story updated successfully",
+        timer:2000,
+        showConfirmButton: false,
+        timerProgressBar: true
+      });
       setExpandedStory(null); // close modal
     } catch (error) {
       console.error("Failed to update story", error);
