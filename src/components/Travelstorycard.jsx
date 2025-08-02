@@ -44,7 +44,7 @@ function Travelstorycard({ stories, setStories }) {
   };
 
   const deletestory = async (storyId) => {
-    console.log(storyId);
+
 
     try {
       const response = await fetch(`http://localhost:8000/api/story/deletestory/${storyId}`, {
@@ -60,7 +60,7 @@ function Travelstorycard({ stories, setStories }) {
       }
 
       const result = await response.json();
-      console.log('Story deleted:', result);
+      
       Swal.fire({
         icon:"success",
         text:"Story Deleted Successfully",
@@ -81,7 +81,7 @@ function Travelstorycard({ stories, setStories }) {
   const updateStory = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log("Sending data", editStoryInput);
+      // console.log("Sending data", editStoryInput);
 
       const response = await axios.put(
         `http://localhost:8000/api/story/editstory/${editStoryInput._id}`,
@@ -100,7 +100,7 @@ function Travelstorycard({ stories, setStories }) {
           },
         }
       );
-      console.log("Story updated successfully", response.data);
+      // console.log("Story updated successfully", response.data);
       Swal.fire({
         icon:"success",
         text:"Story updated successfully",
