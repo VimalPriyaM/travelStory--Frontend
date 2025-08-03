@@ -30,7 +30,7 @@ function Signup() {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/user/signup", usersignup);
+      const response = await axios.post("https://backend-travelstory.onrender.com/api/user/signup", usersignup);
       
       
       localStorage.setItem("signuptoken", response.data.token);

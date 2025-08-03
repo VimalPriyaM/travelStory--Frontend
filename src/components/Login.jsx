@@ -16,7 +16,7 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/user/login', {
+      const response = await axios.post('https://backend-travelstory.onrender.com/api/user/login', {
         email,
         password
       });

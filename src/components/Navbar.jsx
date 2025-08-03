@@ -15,7 +15,7 @@ function Navbar({ setStories }) {
     const token = localStorage.getItem("token");
 
     if (userId && token) {
-      axios.post(`http://localhost:8000/api/user/getuser/${userId}`, {}, {
+      axios.post(`https://backend-travelstory.onrender.com/api/user/getuser/${userId}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -37,7 +37,7 @@ function Navbar({ setStories }) {
   const searchresults = async () => {
     if (!query.trim()) {
       try {
-        const allResponse = await axios.get(`http://localhost:8000/api/story/getstory/${id}`);
+        const allResponse = await axios.get(`https://backend-travelstory.onrender.com/api/story/getstory/${id}`);
         setStories(allResponse.data.data);
         setError('');
       } catch (err) {
@@ -48,7 +48,7 @@ function Navbar({ setStories }) {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/story/searchstory',
+        'https://backend-travelstory.onrender.com/api/story/searchstory',
         { query },
         {
           headers: {

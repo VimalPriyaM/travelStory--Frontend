@@ -23,7 +23,7 @@ function Travelstorycard({ stories, setStories }) {
 
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/story/editfavorite/${storyId}`,
+        `https://backend-travelstory.onrender.com/api/story/editfavorite/${storyId}`,
         { isfavourite: !currentFavStatus },
         {
           headers: {
@@ -47,7 +47,7 @@ function Travelstorycard({ stories, setStories }) {
 
 
     try {
-      const response = await fetch(`http://localhost:8000/api/story/deletestory/${storyId}`, {
+      const response = await fetch(`https://backend-travelstory.onrender.com/api/story/deletestory/${storyId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -84,7 +84,7 @@ function Travelstorycard({ stories, setStories }) {
       // console.log("Sending data", editStoryInput);
 
       const response = await axios.put(
-        `http://localhost:8000/api/story/editstory/${editStoryInput._id}`,
+        `https://backend-travelstory.onrender.com/api/story/editstory/${editStoryInput._id}`,
         {
     title: editStoryInput.title,
     description:editStoryInput.description,
@@ -138,7 +138,7 @@ function Travelstorycard({ stories, setStories }) {
             >
               <div className="relative w-full h-32">
                 <img
-                  src={`http://localhost:8000${story.image}`}
+                  src={`https://backend-travelstory.onrender.com${story.image}`}
                   alt={story.title}
                   className="w-full h-full object-cover"
                 />
@@ -213,7 +213,7 @@ function Travelstorycard({ stories, setStories }) {
       />
 
       <img
-        src={`http://localhost:8000${expandedStory.image}`}
+        src={`https://backend-travelstory.onrender.com${expandedStory.image}`}
         alt={expandedStory.title}
         className="w-full h-auto max-h-60 object-cover rounded-lg mb-4"
       />

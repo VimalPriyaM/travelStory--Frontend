@@ -27,7 +27,7 @@ function Home() {
    useEffect(() => {
     const fetchStories = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/story/getstory/${id}`);
+        const response = await axios.get(`https://backend-travelstory.onrender.com/api/story/getstory/${id}`);
         setStories(response.data.data);
       } catch (err) {
         console.error("Error fetching stories", err);
@@ -56,7 +56,7 @@ function Home() {
         const imageFormData = new FormData();
         imageFormData.append("image", storyinput.image);
 
-        const imageResponse = await axios.post("http://localhost:8000/api/story/imageupload", imageFormData, {
+        const imageResponse = await axios.post("https://backend-travelstory.onrender.com/api/story/imageupload", imageFormData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
@@ -83,7 +83,7 @@ function Home() {
       };
       // console.log("Final storyData being sent:", storyData);
       const storyResponse = await axios.post(
-        "http://localhost:8000/api/story/create",
+        "https://backend-travelstory.onrender.com/api/story/create",
         storyData,
         {
           headers: {
